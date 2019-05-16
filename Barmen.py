@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 # Настройки
-
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 import apiai, json
 updater = Updater(token='701984587:AAGHQyXjhlemd4-1bZDqjDvA6Tuwhq_cqnU') # Токен API к Telegram
