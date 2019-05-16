@@ -1,7 +1,7 @@
 # Настройки
-import telegram.ext
+from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 import apiai, json
-updater = telegram.ext.Updater(token='701984587:AAGHQyXjhlemd4-1bZDqjDvA6Tuwhq_cqnU') # Токен API к Telegram
+updater = Updater(token='701984587:AAGHQyXjhlemd4-1bZDqjDvA6Tuwhq_cqnU') # Токен API к Telegram
 dispatcher = updater.dispatcher
 # Обработка команд
 def startCommand(bot, update):
@@ -19,8 +19,8 @@ def textMessage(bot, update):
     else:
         bot.send_message(chat_id=update.message.chat_id, text='Я Вас не совсем понял!')
 # Хендлеры
-start_command_handler = telegram.ext.CommandHandler('start', startCommand)
-text_message_handler = telegram.ext.MessageHandler(telegram.ext.Filters.text, textMessage)
+start_command_handler = CommandHandler('start', startCommand)
+text_message_handler = MessageHandler(Filters.text, textMessage)
 # Добавляем хендлеры в диспетчер
 dispatcher.add_handler(start_command_handler)
 dispatcher.add_handler(text_message_handler)
