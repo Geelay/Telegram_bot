@@ -2,4 +2,3 @@ telegram
 apiai
 telebot
 PyTelegramBotAPI
-pytelegrambotapi
