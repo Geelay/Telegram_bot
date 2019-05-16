@@ -1,1 +1,1 @@
-bot: python3 Barmen.py
+bot: python Barmen.py
