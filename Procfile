@@ -1,1 +1,1 @@
-bot: python Core.py
+bot: python Barmen.py
