@@ -24,7 +24,8 @@ def sticker_id(message):
 
 @bot.message_handler(commands=['create_account'])
 def create_account(message):
-    print('Здравствуй путник, назови своё имя')
+    bot.send_message(message.chat.id, 'Здравствуй путник, назови своё имя', reply_markup=keyboard1)
+
     
 
 bot.polling()
