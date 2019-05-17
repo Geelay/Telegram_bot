@@ -5,6 +5,7 @@ import apiai, json
 updater = Updater(token='701984587:AAGHQyXjhlemd4-1bZDqjDvA6Tuwhq_cqnU') # Токен API к Telegram
 dispatcher = updater.dispatcher
 # Обработка команд
+
 def startCommand(bot, update):
     bot.send_message(chat_id=update.message.chat_id, text='Привет, давай пообщаемся?')
 def textMessage(bot, update):
