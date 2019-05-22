@@ -1,31 +1,41 @@
 # -*- coding: utf-8 -*-
 import telebot
-
+import time
 bot = telebot.TeleBot('814941567:AAGu3mHvWgCfqDU1BzzpSg5UEWhVAiKV9D0')
 keyboard1 = telebot.types.ReplyKeyboardMarkup()
 keyboard1.row('Привет', 'Пока')
 
+
+
 @bot.message_handler(commands=['start'])
 def start_message(message):
-    bot.send_message(message.chat.id, 'Привет, ты написал мне /start', reply_markup=keyboard1)
-
-@bot.message_handler(content_types=['text'])
-def send_text(message):
-    if message.text.lower() == 'привет':
-        bot.send_message(message.chat.id, 'Привет, мой создатель')
-    elif message.text.lower() == 'пока':
-        bot.send_message(message.chat.id, 'Прощай, создатель')
-    elif message.text.lower() == 'я тебя люблю':
-        bot.send_sticker(message.chat.id, 'CAADAgADZgkAAnlc4gmfCor5YbYYRAI')
-
-@bot.message_handler(content_types=['sticker'])
-def sticker_id(message):
-    print(message)
-
-@bot.message_handler(commands=['create_account'])
-def create_account(message):
-    bot.send_message(message.chat.id, 'Здравствуй путник, назови своё имя', reply_markup=keyboard1)
-
+    def botsen(mess):
+        bot.send_chat_action(message.chat.id, action='typing')
+        time.sleep(1)
+        bot.send_message(message.chat.id, mess, reply_markup=keyboard1)
+    botsen('Здравствуй путник')
+    botsen('Я смотрю ты совсем не помнишь меня')
+    botsen('Но это не важно')
+    botsen('Ведь я тоже забыл твоё имя')
+    botsen('Впрочем')
+    botsen('Оно не так важно')
     
+    
+@bot.message_handler(content_types=[
+                                    'text',
+                                    'sticker',
+                                    'voice',
+                                    'audio',
+                                    'video',
+                                    'photo',
+                                    'document',
+                                    'venue',
+                                    'contact',
+                                    'location'
+                                    ])
+def send_text(message):
+    bot.delete_message(message.chat.id, message.message_id)
+
+
 
 bot.polling()

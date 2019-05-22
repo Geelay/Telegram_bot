@@ -33,6 +33,8 @@ class item:
         target._intelligence -= self._intelligence
         target._wisdom -= self._wisdom
         target._charisma -= self._charisma
+
+
     
 class Normal_unit:
 

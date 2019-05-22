@@ -1,6 +1,5 @@
 telegram
 apiai
-telebot
 PyTelegramBotAPI
 
 
