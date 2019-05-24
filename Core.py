@@ -68,11 +68,6 @@ def start_message(message):
 
         
         f.close()
-
-            
-
-
-
     else:
         pass
 
