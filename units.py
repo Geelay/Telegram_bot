@@ -127,6 +127,7 @@ class Blood_hawk(Normal_unit):
 
 class Boggle(Normal_unit):
     def __init__(self):
+        self._image = 'Boggle.jpg'
         self._health = 18
         self._defence = 14
         self._name = 'Boggle'
@@ -243,4 +244,4 @@ class Traveler(Hero):
         self._charisma = cha
         self._lvl = lvl
 
-enemy_types = [Bandit, Blood_hawk, Boggle]
+enemy_types = [Bandit(), Blood_hawk(), Boggle()]

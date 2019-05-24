@@ -10,9 +10,7 @@ flag = False
 flag1 = True
 NUMBER = 1
 
-bandit = Blood_hawk()
-with open (bandit._image, 'rb') as photo:
-    bann = bot.send_photo('-1001253900604', photo, bandit._name, reply_markup=keyboard1)
+
 
 def battle(hero, villain, hero_action, villain_action):
     h_speed = hero._speed
@@ -20,7 +18,7 @@ def battle(hero, villain, hero_action, villain_action):
     time.sleep(2)
     if h_speed > v_speed:
         hero_action
-        bot.send_message('-1001253900604', 'Вы: ' + str(hero._health) + '\n' + villain._name + str(villain._hhealth) , reply_markup=keyboard1)
+        bot.send_message('-1001253900604', 'Вы: ' + str(hero._health) + '\n' + villain._name + str(villain._health) , reply_markup=keyboard1)
         h_speed -= v_speed
         v_speed = villain._speed
     elif v_speed > h_speed:
@@ -125,9 +123,22 @@ def send_text(message):
             bot.delete_message('-1001253900604', bann.message_id)
             bot.send_message('-1001253900604' , 'ДУМАЕШЬ НА ЭТОМ ТВОИ СТРАДАНИЯ ЗАКОНЧАТСЯ?', reply_markup=keyboard1)
             HERO._health = 1000
-            enemy = random.choice(enemy_types) 
+            while HERO._health > 0:
+                enemy = random.choice(enemy_types) 
+                with open (enemy._image, 'rb') as photo:
+                    bann = bot.send_photo('-1001253900604', photo, enemy._name, reply_markup=keyboard1)
+                if enemy._name == 'Boggle':
+                    atk = enemy.pummel(HERO)
+                if enemy._name == 'Bandit':
+                    atk = enemy.scimilar(HERO)
+                if enemy._name == 'Blood Hawk':
+                    atk = enemy.beak(HERO)
+                while enemy._health > 0:
+                    battle(HERO, enemy, sword.light_atack(HERO, enemy), atk)
+                bot.delete_message('-1001253900604', bann.message_id)
+                
             
-
+            
         else:
             bot.delete_message(message.chat.id, message.message_id)
     else:
